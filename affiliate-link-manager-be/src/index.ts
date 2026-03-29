@@ -47,7 +47,7 @@ app.use("/api", linkRoutes);
 app.get("/", (req, res) => {
   res.send("Affiliate Link Manager API is active!");
 });
-
-httpServer.listen(PORT, () => {
-  console.log(`Server running on: http://localhost:${PORT}`);
+const port = Number(PORT);
+httpServer.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running on port ${port}`);
 });
