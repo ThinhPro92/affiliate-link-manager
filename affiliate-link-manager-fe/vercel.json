@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://affiliate-link-manager-be.onrender.com/api/:path*"
+    },
+    {
+      "source": "/r/:code",
+      "destination": "https://affiliate-link-manager-be.onrender.com/r/:code"
+    },
+    {
+      "source": "/socket.io/:path*",
+      "destination": "https://affiliate-link-manager-be.onrender.com/socket.io/:path*"
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:9225/api",
+  // baseURL: "http://localhost:9225/api", // Xóa dòng cũ này
+  baseURL: "/api", // Dùng đường dẫn tương đối để Vercel Proxy hoạt động
 });
 
 axiosInstance.interceptors.request.use((config) => {
