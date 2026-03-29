@@ -13,5 +13,18 @@
       "source": "/socket.io/:path*",
       "destination": "https://affiliate-link-manager-be.onrender.com/socket.io/:path*"
     }
+  ],
+  "headers": [
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "application/manifest+json" }
+      ]
+    },
+    {
+      "source": "/(.*).(png|ico|svg)",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    }
   ]
 }
