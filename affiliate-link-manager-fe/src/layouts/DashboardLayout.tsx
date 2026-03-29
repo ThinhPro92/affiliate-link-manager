@@ -28,6 +28,7 @@ export const DashboardLayout = () => {
 
   return (
     <div className="flex min-h-screen bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
+      {/* Sidebar cho Desktop (Giữ nguyên logic của bạn) */}
       <aside className="w-64 bg-slate-900 dark:bg-slate-900 text-white hidden md:flex flex-col border-r dark:border-slate-800">
         <div className="p-8 font-black text-xl flex items-center gap-3">
           <div className="bg-blue-600 p-2 rounded-xl">
@@ -75,18 +76,48 @@ export const DashboardLayout = () => {
         </div>
       </aside>
 
-      <main className="flex-1 flex flex-col overflow-hidden">
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col overflow-hidden pb-16 md:pb-0">
         <header className="h-20 bg-white dark:bg-slate-900/50 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10 transition-colors">
           <h2 className="font-bold text-slate-800 dark:text-slate-100 text-lg">
             Hệ thống quản lý
           </h2>
-          <ThemeToggle />
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            {/* Nút đăng xuất nhanh trên mobile */}
+            <button
+              title="Logiut"
+              onClick={handleLogout}
+              className="md:hidden text-red-500 p-2"
+            >
+              <LogOut size={20} />
+            </button>
+          </div>
         </header>
 
         <div className="flex-1 overflow-auto p-4 md:p-8">
           <Outlet />
         </div>
       </main>
+
+      {/* Bottom Navigation cho Mobile (Bổ sung mới) */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex md:hidden justify-around items-center h-16 px-2 z-50">
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.to;
+          return (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+                isActive ? "text-blue-600" : "text-slate-500"
+              }`}
+            >
+              <item.icon size={20} />
+              <span className="text-[10px] font-bold mt-1">{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
     </div>
   );
 };
