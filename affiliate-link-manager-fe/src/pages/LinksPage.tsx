@@ -72,7 +72,8 @@ export const LinksPage = () => {
   }, [fetchLinks]);
 
   useEffect(() => {
-    const socket: Socket = io("http://localhost:9225");
+    const backendUrl = "https://affiliate-link-manager-be.onrender.com";
+    const socket: Socket = io(backendUrl);
     socketRef.current = socket;
     const userId =
       localStorage.getItem("userId") || localStorage.getItem("user_id");
@@ -94,7 +95,9 @@ export const LinksPage = () => {
   }, []);
 
   const handleCopy = (shortCode: string) => {
-    const fullUrl = `http://localhost:9225/r/${shortCode}`;
+    const backendUrl = "https://affiliate-link-manager-be.onrender.com";
+    const fullUrl = `${backendUrl}/r/${shortCode}`;
+
     navigator.clipboard.writeText(fullUrl);
     toast.success("Đã sao chép link rút gọn!");
   };
