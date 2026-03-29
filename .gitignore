@@ -1,0 +1,46 @@
+# --- System Files ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- IDE/Editor Files ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- Dependencies (Quan trọng nhất) ---
+# Loại bỏ node_modules ở cả 2 folder và root (nếu có)
+node_modules/
+affiliate-link-manager-be/node_modules/
+affiliate-link-manager-fe/node_modules/
+
+# --- Build Outputs ---
+# Loại bỏ folder dist của affiliate-link-manager-be và folder build/dist của affiliate-link-manager-fe
+affiliate-link-manager-be/dist/
+affiliate-link-manager-fe/dist/
+affiliate-link-manager-fe/build/
+
+# --- Environment Variables (Bảo mật) ---
+# Không bao giờ đẩy các file chứa mật khẩu/key lên GitHub
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+affiliate-link-manager-be/.env
+affiliate-link-manager-fe/.env.local
+
+# --- Debug/Coverage ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.eslintcache
+
+# --- Optional: OS specific ---
+.project
+.settings/
